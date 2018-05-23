@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Numéro convertit en nombre romain avec Javascript</title>
+  
+</head>
+<body>
+  
+  <h3>Convertir un nombre en nombre romain</h3>
+  <form id="form">
+    <label> Entrer un numéro</label>
+    <input type="number" id="input" min="1" max="50" step="1">
+  </form>
+  <div> Voici votre résultat en Nombre Romain :</div>
+  <div id="result"></div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+   function NumberToRoman(input) {
+      var
+        numbers = [50, 40, 10, 9, 5, 4, 1],
+        letters = ['L', 'XL', 'X', 'IX', 'V', 'IV', 'I'],
+        result = '',
+        N = input,
+        i;
+
+      if (N < 1) {
+        return 'Entrez un numéro compris de 1 à 50';
+      }
+      if (N > 50) {
+        return 'Entrez un numéro inférieur à 50';
+      }
+
+      for (i = 0; i < numbers.length; i++) {
+        while (N >= numbers[i]) {
+          result += letters[i];
+          N -= numbers[i];
+        } 
+      }
+      return result;
+    }
+
+    $('#input').keyup(function () {
+      $('#result').html(NumberToRoman($('#input').val()));
+      return false;
+    });
+  </script>
+</body>
+</html>
